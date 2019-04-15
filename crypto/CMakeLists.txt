@@ -799,16 +799,18 @@ if(EXTRA_EXPORT)
 	endforeach()
 endif()
 
+message(" ----------------------->>>>>>>> OpenSSL/Crypto/CMAKE_CURRENT_LIST_DIR: '${CMAKE_CURRENT_LIST_DIR}'")
+message(" ----------------------->>>>>>>> OpenSSL/Crypto/CMAKE_CURRENT_SOURCE_DIR: '${CMAKE_CURRENT_SOURCE_DIR}'")
 add_library(crypto ${CRYPTO_SRC})
 target_include_directories(crypto
 	PRIVATE
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/.>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/asn1>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/bn>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/dsa>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/evp>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/modes>
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../include/compat>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/compat>
 	PUBLIC  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   		$<INSTALL_INTERFACE:include/openssl>
 	)
