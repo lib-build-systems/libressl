@@ -802,15 +802,15 @@ endif()
 add_library(crypto ${CRYPTO_SRC})
 target_include_directories(crypto
 	PRIVATE
-		.
-		asn1
-		bn
-		dsa
-		evp
-		modes
-		../include/compat
+		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/.>
+		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/asn1>
+		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/bn>
+		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/dsa>
+		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/evp>
+		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/modes>
+		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/../include/compat>
 	PUBLIC  $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-  		$<INSTALL_INTERFACE:include>
+  		$<INSTALL_INTERFACE:include/openssl>
 	)
 	
 if (BUILD_SHARED_LIBS)
