@@ -48,7 +48,7 @@ target_include_directories(ssl
 		../include/compat
 	PUBLIC
 		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-  		$<INSTALL_INTERFACE:include>
+  		$<INSTALL_INTERFACE:include/openssl>
 	)
 
 if (BUILD_SHARED_LIBS)
