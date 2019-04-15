@@ -33,8 +33,8 @@ endif()
 add_library(tls ${TLS_SRC})
 target_include_directories(tls
 	PRIVATE
-		.
-		../include/compat
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/compat>
 	PUBLIC
 		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
   		$<INSTALL_INTERFACE:include/openssl>
