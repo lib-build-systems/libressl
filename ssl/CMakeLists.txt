@@ -44,10 +44,10 @@ set(
 add_library(ssl ${SSL_SRC})
 target_include_directories(ssl
 	PRIVATE
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/compat>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include/compat>
 	PUBLIC
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
   		$<INSTALL_INTERFACE:include/openssl>
 	)
 
