@@ -828,12 +828,13 @@ endif ()
 
 if (ENABLE_LIBRESSL_INSTALL)
     install(TARGETS crypto
-            EXPORT crypto
+            EXPORT crypto-targets
             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
             RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
 
     # Create the .cmake to import the library target into an external project.
-    install(EXPORT crypto DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openssl)
+    install(EXPORT crypto-targets
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openssl)
 endif ()
