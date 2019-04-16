@@ -56,22 +56,23 @@ if (BUILD_SHARED_LIBS)
 	target_link_libraries(ssl crypto ${PLATFORM_LIBS})
 	if (WIN32)
 		set(SSL_POSTFIX -${SSL_MAJOR_VERSION})
-	endif()
-	set_target_properties(ssl PROPERTIES
-		OUTPUT_NAME ssl${SSL_POSTFIX}
-		ARCHIVE_OUTPUT_NAME ssl${SSL_POSTFIX})
+	endif ()
+    
+	set_target_properties(ssl PROPERTIES OUTPUT_NAME ssl${SSL_POSTFIX}
+		                                 ARCHIVE_OUTPUT_NAME ssl${SSL_POSTFIX})
 	set_target_properties(ssl PROPERTIES VERSION ${SSL_VERSION}
-		SOVERSION ${SSL_MAJOR_VERSION})
-endif()
+		                                 SOVERSION ${SSL_MAJOR_VERSION})
+endif ()
 
-if(ENABLE_LIBRESSL_INSTALL)
-	install(TARGETS ssl
-		EXPORT ssl
-		ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-		RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-	)
+if (ENABLE_LIBRESSL_INSTALL)
+    install(TARGETS ssl
+        EXPORT ssl-targets
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    )
 
     # Create the .cmake to import the library target into an external project.
-    install(EXPORT ssl DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openssl)
-endif(ENABLE_LIBRESSL_INSTALL)
+    install(EXPORT ssl-targets
+   		    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openssl)
+endif ()
