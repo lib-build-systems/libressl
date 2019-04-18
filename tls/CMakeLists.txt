@@ -57,13 +57,14 @@ endif ()
 
 if (ENABLE_LIBRESSL_INSTALL)
 	install(TARGETS tls
-		    EXPORT tls-targets
-		    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-		    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-		    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+            EXPORT tls-targets
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	)
 
     # Create the .cmake to import the library target into an external project.
     install(EXPORT tls-targets
+            NAMESPACE libressl::
             DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openssl)
 endif ()
