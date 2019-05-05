@@ -328,7 +328,7 @@ if (NOT MSVC)
 	endforeach ()
 	
 	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/pkgconfig
-		    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openssl)
+		    DESTINATION lib/cmake/openssl)
 endif ()
 
 configure_file(
